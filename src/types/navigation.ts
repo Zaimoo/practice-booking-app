@@ -3,4 +3,5 @@ export type RootStackParamList = {
   Details: { itemId: number };
   Login: undefined;
   SignUp: undefined;
+  Forgot: undefined;
 };
