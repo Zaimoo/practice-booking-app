@@ -24,7 +24,7 @@ export default function LoginScreen({ navigation }: Props) {
       <Text style={styles.subtitle}>Password</Text>
       <TextInput onChangeText={(input) => setPass(input)} />
       <View style={styles.container}>
-        <Pressable onPress={() => navigation.navigate("Forgot")}>
+        <Pressable>
           <Text style={styles.link}>Forgot password?</Text>
         </Pressable>
       </View>
