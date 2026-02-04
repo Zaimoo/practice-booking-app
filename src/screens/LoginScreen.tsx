@@ -50,7 +50,8 @@ export default function LoginScreen({ navigation }: Props) {
               Alert.alert("Validation", "Please enter email and password");
               return;
             }
-            Alert.alert("Success", "Logged in (mock)");
+            // Navigate to MainTabs (bottom tab navigation with Home screen)
+            navigation.navigate("MainTabs" as any);
           }}
         >
           <Text style={styles.buttonText}>Sign In</Text>
