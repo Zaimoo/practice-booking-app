@@ -7,9 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
-import ProfileScreen from "../screens/ProfileScreen";import DetailsScreen from '../screens/DetailsScreen';
-import LoginScreen from '../screens/LoginScreen';
-import SignUpScreen from '../screens/SignUpScreen';
+import ProfileScreen from "../screens/ProfileScreen";
+
 // Import types
 import { RootStackParamList, BottomTabParamList } from "../types/navigation";
 
@@ -91,18 +90,8 @@ export function RootNavigator() {
         />
         <Stack.Screen
           name="Details"
-          component={DetailsScreen}
+          component={HomeScreen}
           options={{ title: "Property Details" }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ title: "Login" }}
-        />
-        <Stack.Screen
-          name="SignUp"
-          component={SignUpScreen}
-          options={{ title: "Sign Up" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
