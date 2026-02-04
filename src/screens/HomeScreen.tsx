@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import { BottomTabParamList } from "../types/navigation";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { HomeStackParamList } from "../types/navigation";
 import { Property } from "../types/types";
+import { Ionicons } from "@expo/vector-icons";
 import {
   View,
   Text,
@@ -13,7 +14,7 @@ import {
   FlatList,
 } from "react-native";
 
-type Props = BottomTabScreenProps<BottomTabParamList, "Home">;
+type Props = NativeStackScreenProps<HomeStackParamList, "HomeScreen">;
 
 export default function HomeScreen({ navigation }: Props) {
   const [searchText, setSearchText] = useState("");
@@ -21,31 +22,58 @@ export default function HomeScreen({ navigation }: Props) {
   const propertyData: Property[] = [
     {
       id: "1",
-      name: "Balay Ni Cezar",
-      location: "Purok Sudlonon",
-      rooms: 1,
-      baths: 1,
-      price: 5000,
+      name: "Neo Classic Villa House",
+      location: "Avenue Montaigne, Paris",
+      rooms: 4,
+      baths: 3,
+      price: 280,
+      hasPool: true,
+      rating: 4.8,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar laoreet felis nec erat. Aliquam egestas, velit at condimentum placerat, sem sapien laoreet mauris, dictum porttitor nunc enim.",
+      image: require("../../assets/images/image1.jpg"),
     },
     {
       id: "2",
-      name: "Bilyaaran ni Jinly",
-      location: "Tibanga Creek",
-      rooms: 2,
-      baths: 4,
-      price: 2500,
+      name: "Castle Mansion Villa House",
+      location: "Rue Saint-Rustigue, Paris",
+      rooms: 3,
+      baths: 2,
+      price: 170,
+      hasPool: false,
+      rating: 4.9,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar laoreet felis nec erat. Aliquam egestas, velit at condimentum placerat, sem sapien laoreet mauris, dictum porttitor nunc enim.",
+      image: require("../../assets/images/image2.jpg"),
+    },
+    {
+      id: "3",
+      name: "Hollywood Mansion Villa House",
+      location: "Los Angeles, United States",
+      rooms: 7,
+      baths: 5,
+      price: 1250,
+      hasPool: true,
+      rating: 4.7,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar laoreet felis nec erat. Aliquam egestas, velit at condimentum placerat, sem sapien laoreet mauris, dictum porttitor nunc enim.",
+      image: require("../../assets/images/image3.jpg"),
     },
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={styles.container}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.scrollContent}
+    >
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <Text style={styles.headerName}>John Smith</Text>
           <Text style={styles.headerLocation}>Paris, France</Text>
         </View>
         <TouchableOpacity>
-          <Text style={styles.bellIcon}>🔔</Text>
+          <Ionicons name="notifications" size={24} color="#000" />
         </TouchableOpacity>
       </View>
 
@@ -57,7 +85,7 @@ export default function HomeScreen({ navigation }: Props) {
           onChangeText={setSearchText}
         />
         <TouchableOpacity style={styles.filterIcon}>
-          <Text>⚙️</Text>
+          <Ionicons name="settings" size={24} color="#000" />
         </TouchableOpacity>
       </View>
 
@@ -65,18 +93,35 @@ export default function HomeScreen({ navigation }: Props) {
         data={propertyData}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <View style={styles.cardImagePlaceholder}>
-              <Text style={styles.imagePlaceholder}>🏠</Text>
-            </View>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() =>
+              navigation.navigate("VillaDetail", { propertyId: item.id })
+            }
+          >
+            <Image source={item.image} style={styles.cardImage} />
             <Text style={styles.cardTitle}>{item.name}</Text>
             <Text style={styles.cardLocation}>{item.location}</Text>
             <View style={styles.cardInfo}>
-              <Text style={styles.infoText}>🛏️ {item.rooms} Rooms</Text>
-              <Text style={styles.infoText}>🚿 {item.baths} Baths</Text>
+              <View style={styles.cardDetailsLeft}>
+                <View style={styles.iconTextContainer}>
+                  <Ionicons name="bed" size={16} color="#666" />
+                  <Text style={styles.infoText}>{item.rooms} Rooms</Text>
+                </View>
+                <View style={styles.iconTextContainer}>
+                  <Ionicons name="water" size={16} color="#666" />
+                  <Text style={styles.infoText}>{item.baths} Baths</Text>
+                </View>
+                {item.hasPool && (
+                  <View style={styles.iconTextContainer}>
+                    <Ionicons name="water" size={16} color="#666" />
+                    <Text style={styles.infoText}>Pool</Text>
+                  </View>
+                )}
+              </View>
               <Text style={styles.price}>${item.price}/night</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
         scrollEnabled={false}
       />
@@ -88,7 +133,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 16,
-    paddingTop: 20,
+    paddingTop: 35,
+  },
+  scrollContent: {
+    paddingBottom: 20,
   },
   header: {
     flexDirection: "row",
@@ -141,36 +189,59 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     backgroundColor: "#fff",
   },
-  cardImagePlaceholder: {
+  cardImageContainer: {
+    position: "relative",
+    width: "100%",
+    height: 250,
+  },
+  cardImage: {
     width: "100%",
     height: 200,
-    backgroundColor: "#e0e0e0",
-    justifyContent: "center",
-    alignItems: "center",
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
   },
-  imagePlaceholder: {
-    fontSize: 60,
+  cardOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    justifyContent: "space-between",
+    padding: 16,
+    borderRadius: 12,
+  },
+  cardContent: {
+    flex: 0,
   },
   cardTitle: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "#000",
     marginTop: 12,
     marginHorizontal: 12,
-    color: "#000",
   },
   cardLocation: {
     fontSize: 12,
-    color: "#999",
+    color: "#666",
     marginHorizontal: 12,
     marginTop: 4,
+    marginBottom: 0,
+  },
+  iconTextContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
   },
   cardInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 12,
-    paddingVertical: 12,
-    borderTopWidth: 1,
-    borderTopColor: "#f0f0f0",
+    paddingVertical: 8,
+    backgroundColor: "#fff",
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+  },
+  cardDetailsLeft: {
+    flexDirection: "row",
+    gap: 16,
   },
   infoText: {
     fontSize: 12,

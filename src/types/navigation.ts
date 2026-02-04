@@ -1,12 +1,14 @@
 import { NavigatorScreenParams } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
+export type HomeStackParamList = {
+  HomeScreen: undefined;
+  VillaDetail: { propertyId: string };
+};
+
 export type RootStackParamList = {
-<<<<<<< HEAD
   MainTabs: NavigatorScreenParams<BottomTabParamList>;
   Details: { itemId: number };
-=======
->>>>>>> 164522e82837707dc73b2e5a73024db8fba29f43
   Login: undefined;
   SignUp: undefined;
   Forgot: undefined;
@@ -14,17 +16,21 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  Home: undefined;
-  Search: undefined;
+  HomeTab: NavigatorScreenParams<HomeStackParamList>;
+  ActiveBooking: undefined;
   Favorites: undefined;
   Profile: undefined;
 };
 
 export type HomeScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  "MainTabs"
+  HomeStackParamList,
+  "HomeScreen"
 >;
 export type DetailsScreenProps = NativeStackScreenProps<
   RootStackParamList,
   "Details"
+>;
+export type VillaDetailScreenProps = NativeStackScreenProps<
+  HomeStackParamList,
+  "VillaDetail"
 >;

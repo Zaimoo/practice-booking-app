@@ -5,4 +5,8 @@ export interface Property {
   rooms: number;
   baths: number;
   price: number;
+  image: any;
+  hasPool: boolean;
+  rating: number;
+  description: string;
 }
