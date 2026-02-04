@@ -4,65 +4,83 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  Pressable,
-  Alert,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/navigation";
-import { useState } from "react";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Login">;
+type Props = NativeStackScreenProps<RootStackParamList, "SignUp">;
 
-export default function LoginScreen({ navigation }: Props) {
-  const [uname, setUname] = useState("");
-  const [pass, setPass] = useState("");
+export default function CreateAccountScreen({ navigation }: Props) {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirm, setConfirm] = React.useState("");
+
+  const handleCreate = () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      Alert.alert("Validation", "Please fill all fields");
+      return;
+    }
+    if (password !== confirm) {
+      Alert.alert("Validation", "Passwords do not match");
+      return;
+    }
+    Alert.alert("Success", "Account created (mock)", [
+      { text: "OK", onPress: () => navigation.navigate("Login") },
+    ]);
+  };
 
   return (
     <View style={styles.page}>
       <View style={styles.card}>
         <Text style={styles.brand}>Booking</Text>
-        <Text style={styles.title}>Sign in</Text>
+        <Text style={styles.title}>Create account</Text>
 
         <TextInput
           style={styles.input}
-          value={uname}
-          onChangeText={(input) => setUname(input)}
-          placeholder="Email"
+          value={name}
+          onChangeText={setName}
+          placeholder="Full name"
           placeholderTextColor="#9aa0a6"
+        />
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          placeholder="Email"
           keyboardType="email-address"
           autoCapitalize="none"
+          placeholderTextColor="#9aa0a6"
         />
-
         <TextInput
           style={styles.input}
-          value={pass}
-          onChangeText={(input) => setPass(input)}
+          value={password}
+          onChangeText={setPassword}
           placeholder="Password"
-          placeholderTextColor="#9aa0a6"
           secureTextEntry
+          placeholderTextColor="#9aa0a6"
+        />
+        <TextInput
+          style={styles.input}
+          value={confirm}
+          onChangeText={setConfirm}
+          placeholder="Confirm Password"
+          secureTextEntry
+          placeholderTextColor="#9aa0a6"
         />
 
-        <TouchableOpacity
-          style={styles.primaryButton}
-          onPress={() => {
-            if (!uname.trim() || !pass.trim()) {
-              Alert.alert("Validation", "Please enter email and password");
-              return;
-            }
-            Alert.alert("Success", "Logged in (mock)");
-          }}
-        >
-          <Text style={styles.buttonText}>Sign In</Text>
+        <TouchableOpacity style={styles.primaryButton} onPress={handleCreate}>
+          <Text style={styles.buttonText}>Create Account</Text>
         </TouchableOpacity>
 
-        <Pressable onPress={() => navigation.navigate("Forgot")}>
-          <Text style={styles.link}>Forgot password?</Text>
-        </Pressable>
-
-        <Pressable onPress={() => navigation.navigate("SignUp")}>
-          <Text style={styles.linkSecondary}>Create an account</Text>
-        </Pressable>
+        <TouchableOpacity
+          style={{ marginTop: 12 }}
+          onPress={() => navigation.navigate("Login")}
+        >
+          <Text style={styles.linkSecondary}>Back to login</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -121,11 +139,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "600",
     fontSize: 16,
-  },
-  link: {
-    marginTop: 12,
-    textAlign: "center",
-    color: "#6b6f76",
   },
   linkSecondary: {
     marginTop: 8,
