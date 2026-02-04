@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": [
@@ -26,4 +27,9 @@
     "node_modules"
   ],
   "extends": "expo/tsconfig.base"
+=======
+    "strict": true,
+    "esModuleInterop": true
+  }
+>>>>>>> 164522e82837707dc73b2e5a73024db8fba29f43
 }
