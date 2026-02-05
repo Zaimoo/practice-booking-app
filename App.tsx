@@ -14,6 +14,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <FavoritesProvider>
+<<<<<<< Updated upstream
       <ActiveBookingsProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Login">
@@ -45,6 +46,37 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </ActiveBookingsProvider>
+=======
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={CreateAccountScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Forgot"
+            component={ForgotScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SendCode"
+            component={SendCodeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MainTabs"
+            component={RootNavigator}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+>>>>>>> Stashed changes
     </FavoritesProvider>
   );
 }
