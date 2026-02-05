@@ -22,7 +22,7 @@ interface SettingItemProps {
 
 const SettingItem: React.FC<SettingItemProps> = ({ icon, label, onPress }) => (
   <TouchableOpacity style={styles.settingItem} onPress={onPress}>
-    <Ionicons name={icon as any} size={24} color="#FF6B35" />
+    <Ionicons name={icon as any} size={24} color="#FF8C00" />
     <Text style={styles.settingLabel}>{label}</Text>
     <Ionicons name="chevron-forward" size={20} color="#999" />
   </TouchableOpacity>
@@ -85,7 +85,7 @@ export default function ProfileScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#000000",
   },
   avatarSection: {
     alignItems: "center",
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   statNumber: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#FF6B35",
+    color: "#FF8C00",
   },
   statLabel: {
     fontSize: 12,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
   },
   logoutBtn: {
-    backgroundColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
     marginHorizontal: 15,
     marginVertical: 30,
     paddingVertical: 14,

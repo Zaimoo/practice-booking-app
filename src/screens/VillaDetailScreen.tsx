@@ -104,7 +104,7 @@ export default function VillaDetailScreen({
           <Ionicons
             name={isFavorite(property.id) ? "heart" : "heart-outline"}
             size={28}
-            color={isFavorite(property.id) ? "#FF6B35" : "#FFF"}
+            color={isFavorite(property.id) ? "#FF8C00" : "#FFF"}
           />
         </TouchableOpacity>
       </View>
@@ -191,7 +191,7 @@ export default function VillaDetailScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#000000",
     paddingTop: RFValue(25),
   },
   header: {
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
   },
   readMore: {
     fontSize: responsiveFontSize(12),
-    color: "#FF6B35",
+    color: "#FF8C00",
     fontWeight: "bold",
     marginTop: RFValue(8),
   },
@@ -314,11 +314,11 @@ const styles = StyleSheet.create({
   price: {
     fontSize: responsiveFontSize(24),
     fontWeight: "bold",
-    color: "#FF6B35",
+    color: "#FF8C00",
     marginTop: RFValue(4),
   },
   bookingButton: {
-    backgroundColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
     paddingHorizontal: RFValue(32),
     paddingVertical: RFValue(12),
     borderRadius: RFValue(24),

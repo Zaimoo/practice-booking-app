@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
   },
   clearAll: {
     fontSize: 14,
-    color: "#FF6B35",
+    color: "#FF8C00",
   },
   section: {
     marginBottom: 24,
@@ -338,8 +338,8 @@ const styles = StyleSheet.create({
     borderColor: "#3A3A3A",
   },
   chipSelected: {
-    backgroundColor: "#FF6B35",
-    borderColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
+    borderColor: "#FF8C00",
   },
   chipText: {
     fontSize: 14,
@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
   priceText: {
     fontSize: 16,
     fontWeight: "600",
-    color: "#FF6B35",
+    color: "#FF8C00",
   },
   slider: {
     width: "100%",
@@ -402,8 +402,8 @@ const styles = StyleSheet.create({
     borderColor: "#3A3A3A",
   },
   facilityChipSelected: {
-    backgroundColor: "#FF6B35",
-    borderColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
+    borderColor: "#FF8C00",
   },
   facilityText: {
     fontSize: 14,
@@ -425,8 +425,8 @@ const styles = StyleSheet.create({
     borderColor: "#3A3A3A",
   },
   ratingChipSelected: {
-    backgroundColor: "#FF6B35",
-    borderColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
+    borderColor: "#FF8C00",
   },
   ratingText: {
     fontSize: 14,
@@ -437,7 +437,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   applyButton: {
-    backgroundColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
     paddingVertical: 16,
     borderRadius: 30,
     alignItems: "center",

@@ -118,16 +118,16 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
               <View style={styles.cardInfo}>
                 <View style={styles.cardDetailsLeft}>
                   <View style={styles.iconTextContainer}>
-                    <Ionicons name="bed" size={16} color="#FF6B35" />
+                    <Ionicons name="bed" size={16} color="#FF8C00" />
                     <Text style={styles.infoText}>{item.rooms} Rooms</Text>
                   </View>
                   <View style={styles.iconTextContainer}>
-                    <Ionicons name="water-outline" size={16} color="#FF6B35" />
+                    <Ionicons name="water-outline" size={16} color="#FF8C00" />
                     <Text style={styles.infoText}>{item.baths} Baths</Text>
                   </View>
                   {item.hasPool && (
                     <View style={styles.iconTextContainer}>
-                      <Ionicons name="water" size={16} color="#FF6B35" />
+                      <Ionicons name="water" size={16} color="#FF8C00" />
                       <Text style={styles.infoText}>Pool</Text>
                     </View>
                   )}
@@ -141,7 +141,7 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
       ) : (
         // Empty state
         <View style={styles.emptyContainer}>
-          <Ionicons name="calendar-outline" size={64} color="#FF6B35" />
+          <Ionicons name="calendar-outline" size={64} color="#FF8C00" />
           <Text style={styles.emptyText}>No Active Bookings yet</Text>
           <Text style={styles.emptySubText}>
             Book now to see your bookings here
@@ -155,7 +155,7 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#000000",
     paddingHorizontal: RFValue(16),
     paddingTop: RFValue(35),
   },
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     width: RFValue(44),
     height: RFValue(44),
     borderRadius: RFValue(22),
-    backgroundColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
     justifyContent: "center",
     alignItems: "center",
     marginLeft: RFValue(8),
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: responsiveFontSize(14),
     fontWeight: "bold",
-    color: "#FF6B35",
+    color: "#FF8C00",
   },
   emptyContainer: {
     justifyContent: "center",
