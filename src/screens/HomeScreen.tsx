@@ -106,16 +106,16 @@ export default function HomeScreen({ navigation }: Props) {
             <View style={styles.cardInfo}>
               <View style={styles.cardDetailsLeft}>
                 <View style={styles.iconTextContainer}>
-                  <Ionicons name="bed" size={16} color="#FF6B35" />
+                  <Ionicons name="bed" size={16} color="#FF8C00" />
                   <Text style={styles.infoText}>{item.rooms} Rooms</Text>
                 </View>
                 <View style={styles.iconTextContainer}>
-                  <Ionicons name="water-outline" size={16} color="#FF6B35" />
+                  <Ionicons name="water-outline" size={16} color="#FF8C00" />
                   <Text style={styles.infoText}>{item.baths} Baths</Text>
                 </View>
                 {item.hasPool && (
                   <View style={styles.iconTextContainer}>
-                    <Ionicons name="water" size={16} color="#FF6B35" />
+                    <Ionicons name="water" size={16} color="#FF8C00" />
                     <Text style={styles.infoText}>Pool</Text>
                   </View>
                 )}
@@ -130,9 +130,13 @@ export default function HomeScreen({ navigation }: Props) {
   );
 }
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#000000",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#000000",
     paddingHorizontal: 16,
     paddingTop: 35,
   },
@@ -179,7 +183,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 8,
@@ -246,6 +250,6 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#FF6B35",
+    color: "#FF8C00",
   },
 });

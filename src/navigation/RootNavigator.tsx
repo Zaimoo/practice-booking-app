@@ -60,10 +60,10 @@ export function RootNavigator() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "#FF6B35",
+        tabBarActiveTintColor: "#FF8C00",
         tabBarInactiveTintColor: "#999",
         tabBarStyle: {
-          backgroundColor: "#1A1A1A",
+          backgroundColor: "#000000",
           borderTopColor: "#2A2A2A",
           borderTopWidth: 1,
           height: 60,
@@ -75,7 +75,7 @@ export function RootNavigator() {
           fontWeight: "600",
         },
         headerStyle: {
-          backgroundColor: "#1A1A1A",
+          backgroundColor: "#000000",
         },
         headerTintColor: "#FFF",
         headerTitleStyle: {
@@ -96,7 +96,7 @@ export function RootNavigator() {
         component={ActiveBookingScreen}
         options={{
           title: "Bookings",
-          headerTitle: "Active Bookings",
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -104,7 +104,7 @@ export function RootNavigator() {
         component={FavoritesScreen}
         options={{
           title: "Favorites",
-          headerTitle: "My Favorites",
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -112,7 +112,7 @@ export function RootNavigator() {
         component={ProfileScreen}
         options={{
           title: "Profile",
-          headerTitle: "My Profile",
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
