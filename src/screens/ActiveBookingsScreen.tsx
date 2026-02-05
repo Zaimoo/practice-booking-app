@@ -82,7 +82,7 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Active Bookings</Text>
         <TouchableOpacity>
-          <Ionicons name="notifications" size={24} color="#000" />
+          <Ionicons name="notifications" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
 
@@ -90,12 +90,13 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
       <View style={styles.searchContainer}>
         <TextInput
           placeholder="Search Bookings..."
+          placeholderTextColor="#999"
           style={styles.searchInput}
           value={searchText}
           onChangeText={setSearchText}
         />
         <TouchableOpacity style={styles.filterIcon}>
-          <Ionicons name="settings" size={24} color="#000" />
+          <Ionicons name="settings" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
 
@@ -117,16 +118,16 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
               <View style={styles.cardInfo}>
                 <View style={styles.cardDetailsLeft}>
                   <View style={styles.iconTextContainer}>
-                    <Ionicons name="bed" size={16} color="#666" />
+                    <Ionicons name="bed" size={16} color="#FF6B35" />
                     <Text style={styles.infoText}>{item.rooms} Rooms</Text>
                   </View>
                   <View style={styles.iconTextContainer}>
-                    <Ionicons name="water" size={16} color="#666" />
+                    <Ionicons name="water-outline" size={16} color="#FF6B35" />
                     <Text style={styles.infoText}>{item.baths} Baths</Text>
                   </View>
                   {item.hasPool && (
                     <View style={styles.iconTextContainer}>
-                      <Ionicons name="water" size={16} color="#666" />
+                      <Ionicons name="water" size={16} color="#FF6B35" />
                       <Text style={styles.infoText}>Pool</Text>
                     </View>
                   )}
@@ -140,7 +141,7 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
       ) : (
         // Empty state
         <View style={styles.emptyContainer}>
-          <Ionicons name="calendar-outline" size={64} color="#ccc" />
+          <Ionicons name="calendar-outline" size={64} color="#FF6B35" />
           <Text style={styles.emptyText}>No Active Bookings yet</Text>
           <Text style={styles.emptySubText}>
             Book now to see your bookings here
@@ -154,7 +155,7 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#1A1A1A",
     paddingHorizontal: RFValue(16),
     paddingTop: RFValue(35),
   },
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: responsiveFontSize(22),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
   },
   searchContainer: {
     flexDirection: "row",
@@ -179,18 +180,18 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#2A2A2A",
     borderRadius: RFValue(24),
     paddingHorizontal: RFValue(16),
     paddingVertical: RFValue(12),
     fontSize: responsiveFontSize(14),
-    color: "#333",
+    color: "#FFF",
   },
   filterIcon: {
     width: RFValue(44),
     height: RFValue(44),
     borderRadius: RFValue(22),
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#FF6B35",
     justifyContent: "center",
     alignItems: "center",
     marginLeft: RFValue(8),
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
     marginBottom: RFValue(20),
     borderRadius: RFValue(12),
     overflow: "hidden",
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
   },
   cardImage: {
     width: "100%",
@@ -210,13 +211,13 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: responsiveFontSize(16),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
     marginTop: RFValue(12),
     marginHorizontal: RFValue(12),
   },
   cardLocation: {
     fontSize: responsiveFontSize(12),
-    color: "#666",
+    color: "#999",
     marginHorizontal: RFValue(12),
     marginTop: RFValue(4),
     marginBottom: 0,
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: RFValue(12),
     paddingVertical: RFValue(8),
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
     borderBottomLeftRadius: RFValue(12),
     borderBottomRightRadius: RFValue(12),
   },
@@ -242,12 +243,12 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: responsiveFontSize(12),
-    color: "#666",
+    color: "#999",
   },
   price: {
     fontSize: responsiveFontSize(14),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FF6B35",
   },
   emptyContainer: {
     justifyContent: "center",
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: responsiveFontSize(18),
     fontWeight: "bold",
-    color: "#333",
+    color: "#FFF",
     marginTop: RFValue(16),
   },
   emptySubText: {

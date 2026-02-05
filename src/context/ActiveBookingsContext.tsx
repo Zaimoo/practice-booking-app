@@ -1,11 +1,15 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
-interface Booking {
+export interface Booking {
   id: string;
   propertyId: string;
-  checkIn: string;
-  checkOut: string;
-  status: "confirmed" | "pending" | "cancelled";
+  propertyName: string;
+  propertyImage: any;
+  propertyPrice: number;
+  checkIn: Date;
+  checkOut: Date;
+  guests: number;
+  status: "active" | "completed" | "cancelled";
 }
 
 interface ActiveBookingsContextType {

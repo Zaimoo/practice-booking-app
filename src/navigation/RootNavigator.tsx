@@ -60,8 +60,27 @@ export function RootNavigator() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "#007AFF",
-        tabBarInactiveTintColor: "#8E8E93",
+        tabBarActiveTintColor: "#FF6B35",
+        tabBarInactiveTintColor: "#999",
+        tabBarStyle: {
+          backgroundColor: "#1A1A1A",
+          borderTopColor: "#2A2A2A",
+          borderTopWidth: 1,
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "600",
+        },
+        headerStyle: {
+          backgroundColor: "#1A1A1A",
+        },
+        headerTintColor: "#FFF",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
       })}
     >
       <Tab.Screen

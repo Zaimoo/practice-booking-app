@@ -22,7 +22,7 @@ interface SettingItemProps {
 
 const SettingItem: React.FC<SettingItemProps> = ({ icon, label, onPress }) => (
   <TouchableOpacity style={styles.settingItem} onPress={onPress}>
-    <Ionicons name={icon as any} size={24} color="#333" />
+    <Ionicons name={icon as any} size={24} color="#FF6B35" />
     <Text style={styles.settingLabel}>{label}</Text>
     <Ionicons name="chevron-forward" size={20} color="#999" />
   </TouchableOpacity>
@@ -85,25 +85,27 @@ export default function ProfileScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: "#1A1A1A",
   },
   avatarSection: {
     alignItems: "center",
     paddingVertical: 30,
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
     borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    borderBottomColor: "#3A3A3A",
   },
   avatar: {
     width: 100,
     height: 100,
     borderRadius: 50,
     marginBottom: 15,
+    borderWidth: 3,
+    borderColor: "#FF6B35",
   },
   name: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "#333",
+    color: "#FFF",
     marginBottom: 5,
   },
   email: {
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   },
   statsSection: {
     flexDirection: "row",
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
     marginVertical: 15,
     marginHorizontal: 15,
     borderRadius: 10,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
   statNumber: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#007AFF",
+    color: "#FF6B35",
   },
   statLabel: {
     fontSize: 12,
@@ -137,10 +139,10 @@ const styles = StyleSheet.create({
   divider: {
     width: 1,
     height: 40,
-    backgroundColor: "#eee",
+    backgroundColor: "#3A3A3A",
   },
   settingsList: {
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
     marginHorizontal: 15,
     borderRadius: 10,
     overflow: "hidden",
@@ -151,16 +153,16 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "#f0f0f0",
+    borderBottomColor: "#3A3A3A",
   },
   settingLabel: {
     flex: 1,
     marginLeft: 15,
     fontSize: 16,
-    color: "#333",
+    color: "#FFF",
   },
   logoutBtn: {
-    backgroundColor: "#FF3B30",
+    backgroundColor: "#FF6B35",
     marginHorizontal: 15,
     marginVertical: 30,
     paddingVertical: 14,
