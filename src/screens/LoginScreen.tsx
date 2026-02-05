@@ -1,3 +1,4 @@
+import { CommonActions } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useState } from "react";
 import {
@@ -57,7 +58,12 @@ export default function LoginScreen({ navigation }: Props) {
               return;
             }
             // Navigate to MainTabs (bottom tab navigation with Home screen)
-            navigation.navigate("MainTabs" as any);
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{ name: "MainTabs" }],
+              }),
+            );
           }}
         >
           <Text style={styles.buttonText}>Log In</Text>

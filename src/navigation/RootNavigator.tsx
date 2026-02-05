@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ActiveBookingScreen from "../screens/ActiveBookingsScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import HomeScreen from "../screens/HomeScreen";
+import NotificationScreen from "../screens/NotificationScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import VillaDetailScreen from "../screens/VillaDetailScreen";
 
@@ -29,6 +30,13 @@ function HomeStackNavigator() {
       <HomeStack.Screen
         name="VillaDetail"
         component={VillaDetailScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="Notification"
+        component={NotificationScreen}
         options={{
           headerShown: false,
         }}
@@ -66,9 +74,9 @@ export function RootNavigator() {
           backgroundColor: "#000000",
           borderTopColor: "#2A2A2A",
           borderTopWidth: 1,
-          height: 60,
-          paddingBottom: 8,
-          paddingTop: 8,
+          height: 70,
+          paddingBottom: 15,
+          paddingTop: 10,
         },
         tabBarLabelStyle: {
           fontSize: 12,

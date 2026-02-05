@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { HomeStackParamList } from "../types/navigation";
 import { Property } from "../types/types";
+import { RFValue, responsiveFontSize } from "../utils/responsive";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "HomeScreen">;
 
@@ -69,10 +70,13 @@ export default function HomeScreen({ navigation }: Props) {
     >
       <View style={styles.header}>
         <View style={styles.headerLeft}>
+          <Image
+            source={require("../../assets/images/profileimg.jpg")}
+            style={styles.profileImage}
+          />
           <Text style={styles.headerName}>John Smith</Text>
-          <Text style={styles.headerLocation}>Paris, France</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
           <Ionicons name="notifications" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
@@ -137,30 +141,33 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#000000",
-    paddingHorizontal: 16,
-    paddingTop: 35,
+    paddingHorizontal: RFValue(16),
+    paddingTop: RFValue(35),
   },
   scrollContent: {
-    paddingBottom: 20,
+    paddingBottom: RFValue(20),
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: RFValue(20),
   },
   headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
+  profileImage: {
+    width: RFValue(40),
+    height: RFValue(40),
+    borderRadius: RFValue(20),
+    marginRight: RFValue(12),
+  },
   headerName: {
-    fontSize: 18,
+    fontSize: responsiveFontSize(18),
     fontWeight: "bold",
     color: "#FFF",
-  },
-  headerLocation: {
-    fontSize: 14,
-    color: "#999",
-    marginTop: 4,
   },
   bellIcon: {
     fontSize: 20,
@@ -168,60 +175,60 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: RFValue(24),
   },
   searchInput: {
     flex: 1,
     backgroundColor: "#2A2A2A",
-    borderRadius: 24,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 14,
+    borderRadius: RFValue(24),
+    paddingHorizontal: RFValue(16),
+    paddingVertical: RFValue(12),
+    fontSize: responsiveFontSize(14),
     color: "#FFF",
   },
   filterIcon: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    width: RFValue(44),
+    height: RFValue(44),
+    borderRadius: RFValue(22),
     backgroundColor: "#FF8C00",
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 8,
+    marginLeft: RFValue(8),
   },
   card: {
-    marginBottom: 20,
-    borderRadius: 12,
+    marginBottom: RFValue(20),
+    borderRadius: RFValue(12),
     overflow: "hidden",
     backgroundColor: "#2A2A2A",
   },
   cardImage: {
     width: "100%",
-    height: 200,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
+    height: RFValue(200),
+    borderTopLeftRadius: RFValue(12),
+    borderTopRightRadius: RFValue(12),
   },
   cardOverlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.3)",
     justifyContent: "space-between",
-    padding: 16,
-    borderRadius: 12,
+    padding: RFValue(16),
+    borderRadius: RFValue(12),
   },
   cardContent: {
     flex: 0,
   },
   cardTitle: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontWeight: "bold",
     color: "#FFF",
-    marginTop: 12,
-    marginHorizontal: 12,
+    marginTop: RFValue(12),
+    marginHorizontal: RFValue(12),
   },
   cardLocation: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(12),
     color: "#999",
-    marginHorizontal: 12,
-    marginTop: 4,
+    marginHorizontal: RFValue(12),
+    marginTop: RFValue(4),
     marginBottom: 0,
   },
   iconTextContainer: {
@@ -233,22 +240,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: RFValue(12),
+    paddingVertical: RFValue(8),
     backgroundColor: "#2A2A2A",
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
+    borderBottomLeftRadius: RFValue(12),
+    borderBottomRightRadius: RFValue(12),
   },
   cardDetailsLeft: {
     flexDirection: "row",
-    gap: 16,
+    gap: RFValue(16),
   },
   infoText: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(12),
     color: "#999",
   },
   price: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     fontWeight: "bold",
     color: "#FF8C00",
   },
