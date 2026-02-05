@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ActiveBookingsProvider } from "./src/context/ActiveBookingsContext";
 import { FavoritesProvider } from "./src/context/FavoritesContext";
 import { RootNavigator } from "./src/navigation/RootNavigator";
 import CreateAccountScreen from "./src/screens/CreateAccountScreen";
@@ -13,35 +14,37 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <FavoritesProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{ title: "Log In" }}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={CreateAccountScreen}
-            options={{ title: "Create Account" }}
-          />
-          <Stack.Screen
-            name="Forgot"
-            component={ForgotScreen}
-            options={{ title: "Forgot" }}
-          />
-          <Stack.Screen
-            name="SendCode"
-            component={SendCodeScreen}
-            options={{ title: "Send Code" }}
-          />
-          <Stack.Screen
-            name="MainTabs"
-            component={RootNavigator}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ActiveBookingsProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ title: "Log In" }}
+            />
+            <Stack.Screen
+              name="SignUp"
+              component={CreateAccountScreen}
+              options={{ title: "Create Account" }}
+            />
+            <Stack.Screen
+              name="Forgot"
+              component={ForgotScreen}
+              options={{ title: "Forgot" }}
+            />
+            <Stack.Screen
+              name="SendCode"
+              component={SendCodeScreen}
+              options={{ title: "Send Code" }}
+            />
+            <Stack.Screen
+              name="MainTabs"
+              component={RootNavigator}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ActiveBookingsProvider>
     </FavoritesProvider>
   );
 }

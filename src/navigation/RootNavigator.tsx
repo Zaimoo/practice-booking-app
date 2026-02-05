@@ -1,11 +1,11 @@
+import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
 
 // Import your screens
-import HomeScreen from "../screens/HomeScreen";
-import { default as ActiveBookingScreen } from "../screens/SearchScreen";
+import ActiveBookingScreen from "../screens/ActiveBookingsScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
+import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import VillaDetailScreen from "../screens/VillaDetailScreen";
 
