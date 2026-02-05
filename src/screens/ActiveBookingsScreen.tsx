@@ -81,7 +81,11 @@ export default function ActiveBookingsScreen({ navigation }: Props) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Active Bookings</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("HomeTab", { screen: "Notification" })
+          }
+        >
           <Ionicons name="notifications" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
@@ -176,7 +180,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: RFValue(24),
+    marginBottom: 24,
   },
   searchInput: {
     flex: 1,

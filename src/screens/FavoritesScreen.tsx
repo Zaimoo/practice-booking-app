@@ -81,7 +81,11 @@ export default function FavoritesScreen({ navigation }: Props) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>My Favorites</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("HomeTab", { screen: "Notification" })
+          }
+        >
           <Ionicons name="notifications" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
@@ -155,7 +159,7 @@ export default function FavoritesScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#000000",
     paddingHorizontal: RFValue(16),
     paddingTop: RFValue(35),
   },
@@ -191,7 +195,7 @@ const styles = StyleSheet.create({
     width: RFValue(44),
     height: RFValue(44),
     borderRadius: RFValue(22),
-    backgroundColor: "#FF6B35",
+    backgroundColor: "#FF8C00",
     justifyContent: "center",
     alignItems: "center",
     marginLeft: RFValue(8),

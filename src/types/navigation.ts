@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 export type HomeStackParamList = {
   HomeScreen: undefined;
   VillaDetail: { propertyId: string };
+  Notification: undefined;
 };
 
 export type RootStackParamList = {
@@ -13,6 +14,7 @@ export type RootStackParamList = {
   SignUp: undefined;
   Forgot: undefined;
   SendCode: undefined;
+  Logout: undefined;
 };
 
 export type BottomTabParamList = {

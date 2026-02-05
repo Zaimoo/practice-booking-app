@@ -11,6 +11,7 @@ import {
   View,
 } from "react-native";
 import { BottomTabParamList } from "../types/navigation";
+import { RFValue } from "../utils/responsive";
 
 type Props = NativeStackScreenProps<BottomTabParamList, "Profile">;
 
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#000000",
+    paddingTop: RFValue(35),
   },
   avatarSection: {
     alignItems: "center",
