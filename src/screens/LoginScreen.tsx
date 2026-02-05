@@ -1,16 +1,15 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Pressable,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../types/navigation";
 import { useState } from "react";
+import {
+  Alert,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { RootStackParamList } from "../types/navigation";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 
@@ -21,7 +20,14 @@ export default function LoginScreen({ navigation }: Props) {
   return (
     <View style={styles.page}>
       <View style={styles.card}>
-        <Text style={styles.brand}>Booking</Text>
+        <View style={styles.brandContainer}>
+          <View style={styles.brandBlack}>
+            <Text style={styles.brandWhite}>Booking</Text>
+          </View>
+          <View style={styles.brandOrange}>
+            <Text style={styles.brandDark}>Hub</Text>
+          </View>
+        </View>
         <Text style={styles.title}>Sign in</Text>
 
         <TextInput
@@ -54,7 +60,7 @@ export default function LoginScreen({ navigation }: Props) {
             navigation.navigate("MainTabs" as any);
           }}
         >
-          <Text style={styles.buttonText}>Sign In</Text>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
 
         <Pressable onPress={() => navigation.navigate("Forgot")}>
@@ -72,7 +78,7 @@ export default function LoginScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: "#f7f7f8",
+    backgroundColor: "#000000",
     alignItems: "center",
     justifyContent: "center",
     padding: 24,
@@ -80,26 +86,45 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     maxWidth: 420,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#000000",
     borderRadius: 14,
     padding: 24,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.06,
     shadowRadius: 20,
-    elevation: 6,
+    elevation: 30,
     alignItems: "stretch",
   },
-  brand: {
+  brandContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 6,
+    gap: 0,
+  },
+  brandBlack: {
+    backgroundColor: "#000000",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  brandOrange: {
+    backgroundColor: "#FF8C00",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  brandWhite: {
     fontSize: 28,
     fontWeight: "700",
-    color: "#0b0b0b",
-    marginBottom: 6,
-    textAlign: "center",
+    color: "#FFFFFF",
+  },
+  brandDark: {
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#1a1a1a",
   },
   title: {
     fontSize: 18,
-    color: "#60636a",
+    color: "#ffffff",
     marginBottom: 18,
     textAlign: "center",
   },
@@ -113,7 +138,7 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     marginTop: 8,
-    backgroundColor: "#0b6478",
+    backgroundColor: "#FF8C00",
     paddingVertical: 14,
     borderRadius: 10,
     alignItems: "center",
@@ -126,12 +151,12 @@ const styles = StyleSheet.create({
   link: {
     marginTop: 12,
     textAlign: "center",
-    color: "#6b6f76",
+    color: "#FF8C00",
   },
   linkSecondary: {
     marginTop: 8,
     textAlign: "center",
-    color: "#0b6478",
+    color: "#FF8C00",
     fontWeight: "600",
   },
 });
