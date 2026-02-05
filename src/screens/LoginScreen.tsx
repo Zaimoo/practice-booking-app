@@ -60,7 +60,7 @@ export default function LoginScreen({ navigation }: Props) {
             navigation.navigate("MainTabs" as any);
           }}
         >
-          <Text style={styles.buttonText}>Sign In</Text>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
 
         <Pressable onPress={() => navigation.navigate("Forgot")}>
