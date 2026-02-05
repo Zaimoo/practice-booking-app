@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useState } from "react";
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { HomeStackParamList } from "../types/navigation";
 import { Property } from "../types/types";
-import { Ionicons } from "@expo/vector-icons";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TextInput,
-  Image,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "HomeScreen">;
 
@@ -188,11 +188,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: "hidden",
     backgroundColor: "#fff",
-  },
-  cardImageContainer: {
-    position: "relative",
-    width: "100%",
-    height: 250,
   },
   cardImage: {
     width: "100%",

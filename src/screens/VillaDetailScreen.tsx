@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   Image,
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { useFavorites } from "../context/FavoritesContext";
 import { VillaDetailScreenProps } from "../types/navigation";
 import { Property } from "../types/types";
+import { RFValue, responsiveFontSize } from "../utils/responsive";
 
 const propertyData: Property[] = [
   {
@@ -58,7 +60,7 @@ export default function VillaDetailScreen({
   route,
 }: VillaDetailScreenProps) {
   const [showFullDescription, setShowFullDescription] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   const property = propertyData.find((p) => p.id === route.params.propertyId);
 
@@ -83,11 +85,19 @@ export default function VillaDetailScreen({
           <Ionicons name="chevron-back" size={28} color="#000" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Villa Detail</Text>
-        <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
+        <TouchableOpacity
+          onPress={() => {
+            if (isFavorite(property.id)) {
+              removeFavorite(property.id);
+            } else {
+              addFavorite(property.id);
+            }
+          }}
+        >
           <Ionicons
-            name={isFavorite ? "heart" : "heart-outline"}
+            name={isFavorite(property.id) ? "heart" : "heart-outline"}
             size={28}
-            color={isFavorite ? "#FF6B6B" : "#000"}
+            color={isFavorite(property.id) ? "#FF6B6B" : "#000"}
           />
         </TouchableOpacity>
       </View>
@@ -162,31 +172,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 25,
+    paddingTop: RFValue(25),
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingHorizontal: RFValue(16),
+    paddingVertical: RFValue(16),
   },
   backButton: {
-    fontSize: 24,
+    fontSize: responsiveFontSize(24),
     fontWeight: "bold",
   },
   headerTitle: {
-    fontSize: 18,
+    fontSize: responsiveFontSize(18),
     fontWeight: "bold",
     color: "#000",
   },
   favoriteButton: {
-    fontSize: 24,
+    fontSize: responsiveFontSize(24),
   },
   imageContainer: {
-    height: 250,
-    borderRadius: 20,
-    marginHorizontal: 16,
+    height: RFValue(250),
+    borderRadius: RFValue(20),
+    marginHorizontal: RFValue(16),
     overflow: "hidden",
   },
   image: {
@@ -195,8 +205,8 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   content: {
-    paddingHorizontal: 16,
-    paddingTop: 20,
+    paddingHorizontal: RFValue(16),
+    paddingTop: RFValue(20),
   },
   titleRatingContainer: {
     flexDirection: "row",
@@ -204,96 +214,97 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   title: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(20),
     fontWeight: "bold",
     color: "#000",
     flex: 1,
   },
   ratingCard: {
-    marginLeft: 12,
+    marginLeft: RFValue(12),
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
+    gap: RFValue(4),
     backgroundColor: "#e8e8e8",
-    borderRadius: 12,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
+    borderRadius: RFValue(12),
+    paddingHorizontal: RFValue(8),
+    paddingVertical: RFValue(6),
   },
   ratingText: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     fontWeight: "bold",
   },
   location: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
     color: "#666",
-    marginTop: 8,
+    marginTop: RFValue(8),
   },
   detailsRow: {
     flexDirection: "row",
-    marginTop: 16,
-    gap: 20,
+    marginTop: RFValue(16),
+    gap: RFValue(20),
+    flexWrap: "wrap",
   },
   detailCard: {
     backgroundColor: "#e8e8e8",
-    borderRadius: 12,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
+    borderRadius: RFValue(12),
+    paddingHorizontal: RFValue(8),
+    paddingVertical: RFValue(6),
   },
   detailItemContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 6,
+    gap: RFValue(6),
   },
   detailItem: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(12),
     color: "#333",
   },
   descriptionContainer: {
-    marginTop: 24,
+    marginTop: RFValue(24),
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(16),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: 8,
+    marginBottom: RFValue(8),
   },
   descriptionText: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(12),
     color: "#666",
-    lineHeight: 18,
+    lineHeight: RFValue(18),
   },
   readMore: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(12),
     color: "#007AFF",
     fontWeight: "bold",
-    marginTop: 8,
+    marginTop: RFValue(8),
   },
   priceContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 24,
-    marginBottom: 80,
+    marginTop: RFValue(24),
+    marginBottom: RFValue(80),
   },
   priceLabel: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(12),
     color: "#666",
   },
   price: {
-    fontSize: 24,
+    fontSize: responsiveFontSize(24),
     fontWeight: "bold",
     color: "#000",
-    marginTop: 4,
+    marginTop: RFValue(4),
   },
   bookingButton: {
     backgroundColor: "#007AFF",
-    paddingHorizontal: 32,
-    paddingVertical: 12,
-    borderRadius: 24,
+    paddingHorizontal: RFValue(32),
+    paddingVertical: RFValue(12),
+    borderRadius: RFValue(24),
   },
   bookingButtonText: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: responsiveFontSize(14),
   },
 });
