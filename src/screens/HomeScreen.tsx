@@ -73,19 +73,20 @@ export default function HomeScreen({ navigation }: Props) {
           <Text style={styles.headerLocation}>Paris, France</Text>
         </View>
         <TouchableOpacity>
-          <Ionicons name="notifications" size={24} color="#000" />
+          <Ionicons name="notifications" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
 
       <View style={styles.searchContainer}>
         <TextInput
           placeholder="Search by Location..."
+          placeholderTextColor="#999"
           style={styles.searchInput}
           value={searchText}
           onChangeText={setSearchText}
         />
         <TouchableOpacity style={styles.filterIcon}>
-          <Ionicons name="settings" size={24} color="#000" />
+          <Ionicons name="settings" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
 
@@ -105,16 +106,16 @@ export default function HomeScreen({ navigation }: Props) {
             <View style={styles.cardInfo}>
               <View style={styles.cardDetailsLeft}>
                 <View style={styles.iconTextContainer}>
-                  <Ionicons name="bed" size={16} color="#666" />
+                  <Ionicons name="bed" size={16} color="#FF6B35" />
                   <Text style={styles.infoText}>{item.rooms} Rooms</Text>
                 </View>
                 <View style={styles.iconTextContainer}>
-                  <Ionicons name="water" size={16} color="#666" />
+                  <Ionicons name="water-outline" size={16} color="#FF6B35" />
                   <Text style={styles.infoText}>{item.baths} Baths</Text>
                 </View>
                 {item.hasPool && (
                   <View style={styles.iconTextContainer}>
-                    <Ionicons name="water" size={16} color="#666" />
+                    <Ionicons name="water" size={16} color="#FF6B35" />
                     <Text style={styles.infoText}>Pool</Text>
                   </View>
                 )}
@@ -131,7 +132,7 @@ export default function HomeScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#1A1A1A",
     paddingHorizontal: 16,
     paddingTop: 35,
   },
@@ -150,11 +151,11 @@ const styles = StyleSheet.create({
   headerName: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
   },
   headerLocation: {
     fontSize: 14,
-    color: "#666",
+    color: "#999",
     marginTop: 4,
   },
   bellIcon: {
@@ -167,18 +168,18 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#2A2A2A",
     borderRadius: 24,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 14,
-    color: "#333",
+    color: "#FFF",
   },
   filterIcon: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#FF6B35",
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 8,
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 12,
     overflow: "hidden",
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
   },
   cardImage: {
     width: "100%",
@@ -208,13 +209,13 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
     marginTop: 12,
     marginHorizontal: 12,
   },
   cardLocation: {
     fontSize: 12,
-    color: "#666",
+    color: "#999",
     marginHorizontal: 12,
     marginTop: 4,
     marginBottom: 0,
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 8,
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2A2A",
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
   },
@@ -240,11 +241,11 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 12,
-    color: "#666",
+    color: "#999",
   },
   price: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#000",
+    color: "#FF6B35",
   },
 });

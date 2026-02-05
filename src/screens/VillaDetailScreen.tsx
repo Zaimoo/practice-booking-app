@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import FilterModal, { FilterOptions } from "../components/FilterModal";
 import { useFavorites } from "../context/FavoritesContext";
 import { VillaDetailScreenProps } from "../types/navigation";
 import { Property } from "../types/types";
@@ -30,7 +31,7 @@ const propertyData: Property[] = [
   {
     id: "2",
     name: "Castle Mansion Villa House",
-    location: "Rue Saint-Rustigue, Paris",
+    location: "Rue Saint-Rustique, Paris",
     rooms: 3,
     baths: 2,
     price: 170,
@@ -60,6 +61,7 @@ export default function VillaDetailScreen({
   route,
 }: VillaDetailScreenProps) {
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [filterVisible, setFilterVisible] = useState(false);
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   const property = propertyData.find((p) => p.id === route.params.propertyId);
@@ -78,11 +80,16 @@ export default function VillaDetailScreen({
     ? property.description
     : property.description.substring(0, descriptionLength) + "...";
 
+  const handleApplyFilters = (filters: FilterOptions) => {
+    console.log("Booking confirmed:", filters);
+    setFilterVisible(false);
+  };
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back" size={28} color="#000" />
+          <Ionicons name="chevron-back" size={28} color="#FFF" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Villa Detail</Text>
         <TouchableOpacity
@@ -97,7 +104,7 @@ export default function VillaDetailScreen({
           <Ionicons
             name={isFavorite(property.id) ? "heart" : "heart-outline"}
             size={28}
-            color={isFavorite(property.id) ? "#FF6B6B" : "#000"}
+            color={isFavorite(property.id) ? "#FF6B35" : "#FFF"}
           />
         </TouchableOpacity>
       </View>
@@ -126,7 +133,7 @@ export default function VillaDetailScreen({
           </View>
           <View style={styles.detailCard}>
             <View style={styles.detailItemContainer}>
-              <Ionicons name="water" size={18} color="#333" />
+              <Ionicons name="water-outline" size={18} color="#333" />
               <Text style={styles.detailItem}>{property.baths} Baths</Text>
             </View>
           </View>
@@ -159,11 +166,24 @@ export default function VillaDetailScreen({
             <Text style={styles.priceLabel}>Price</Text>
             <Text style={styles.price}>${property.price}/night</Text>
           </View>
-          <TouchableOpacity style={styles.bookingButton}>
+          <TouchableOpacity
+            style={styles.bookingButton}
+            onPress={() => setFilterVisible(true)}
+          >
             <Text style={styles.bookingButtonText}>Booking</Text>
           </TouchableOpacity>
         </View>
       </View>
+
+      <FilterModal
+        visible={filterVisible}
+        onClose={() => setFilterVisible(false)}
+        onApply={handleApplyFilters}
+        propertyId={property.id}
+        propertyName={property.name}
+        propertyImage={property.image}
+        propertyPrice={property.price}
+      />
     </ScrollView>
   );
 }
@@ -171,7 +191,7 @@ export default function VillaDetailScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#1A1A1A",
     paddingTop: RFValue(25),
   },
   header: {
@@ -188,7 +208,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: responsiveFontSize(18),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
   },
   favoriteButton: {
     fontSize: responsiveFontSize(24),
@@ -216,7 +236,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: responsiveFontSize(20),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
     flex: 1,
   },
   ratingCard: {
@@ -224,7 +244,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: RFValue(4),
-    backgroundColor: "#e8e8e8",
+    backgroundColor: "#2A2A2A",
     borderRadius: RFValue(12),
     paddingHorizontal: RFValue(8),
     paddingVertical: RFValue(6),
@@ -232,10 +252,11 @@ const styles = StyleSheet.create({
   ratingText: {
     fontSize: responsiveFontSize(14),
     fontWeight: "bold",
+    color: "#FFF",
   },
   location: {
     fontSize: responsiveFontSize(14),
-    color: "#666",
+    color: "#999",
     marginTop: RFValue(8),
   },
   detailsRow: {
@@ -245,7 +266,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   detailCard: {
-    backgroundColor: "#e8e8e8",
+    backgroundColor: "#2A2A2A",
     borderRadius: RFValue(12),
     paddingHorizontal: RFValue(8),
     paddingVertical: RFValue(6),
@@ -257,7 +278,7 @@ const styles = StyleSheet.create({
   },
   detailItem: {
     fontSize: responsiveFontSize(12),
-    color: "#333",
+    color: "#FFF",
   },
   descriptionContainer: {
     marginTop: RFValue(24),
@@ -265,17 +286,17 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: responsiveFontSize(16),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FFF",
     marginBottom: RFValue(8),
   },
   descriptionText: {
     fontSize: responsiveFontSize(12),
-    color: "#666",
+    color: "#999",
     lineHeight: RFValue(18),
   },
   readMore: {
     fontSize: responsiveFontSize(12),
-    color: "#007AFF",
+    color: "#FF6B35",
     fontWeight: "bold",
     marginTop: RFValue(8),
   },
@@ -288,16 +309,16 @@ const styles = StyleSheet.create({
   },
   priceLabel: {
     fontSize: responsiveFontSize(12),
-    color: "#666",
+    color: "#999",
   },
   price: {
     fontSize: responsiveFontSize(24),
     fontWeight: "bold",
-    color: "#000",
+    color: "#FF6B35",
     marginTop: RFValue(4),
   },
   bookingButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#FF6B35",
     paddingHorizontal: RFValue(32),
     paddingVertical: RFValue(12),
     borderRadius: RFValue(24),
