@@ -1,18 +1,18 @@
-import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RootStackParamList } from "./src/types/navigation";
+import { FavoritesProvider } from "./src/context/FavoritesContext";
 import { RootNavigator } from "./src/navigation/RootNavigator";
-import LoginScreen from "./src/screens/LoginScreen";
 import CreateAccountScreen from "./src/screens/CreateAccountScreen";
 import ForgotScreen from "./src/screens/ForgotScreen";
+import LoginScreen from "./src/screens/LoginScreen";
 import SendCodeScreen from "./src/screens/SendCodeScreen";
+import { RootStackParamList } from "./src/types/navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <>
+    <FavoritesProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
@@ -42,7 +42,6 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      <StatusBar style="auto" />
-    </>
+    </FavoritesProvider>
   );
 }

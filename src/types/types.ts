@@ -9,4 +9,5 @@ export interface Property {
   hasPool: boolean;
   rating: number;
   description: string;
+  isFavorite?: boolean;
 }
